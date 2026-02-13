@@ -1,0 +1,9 @@
+# Ignore node_modules in all subfolders (Most Reliable Way)
+**/node_modules/
+
+# Ignore .env in all subfolders
+**/.env
+
+# Ignore build and dist in all subfolders
+**/dist/
+**/build/

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #f0f2f5; padding: 20px; margin: 0; line-height: 1.6; }
+        .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); border-left: 5px solid #d9534f; }
+        .header { background-color: #333; color: #fff; text-align: center; padding: 25px 20px; }
+        .header h1 { font-size: 28px; margin: 0; font-weight: 600; }
+        .content { padding: 30px; color: #444; }
+        .content h2 { color: #555; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 25px; }
+        .important-notice { background-color: #fef8f8; border-left: 4px solid #d9534f; padding: 15px; margin-top: 20px; }
+        .important-notice p { margin: 0; }
+        .cta-button { display: inline-block; background-color: #333; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 50px; margin-top: 20px; text-align: center; }
+        .footer { text-align: center; padding: 20px; font-size: 12px; color: #aaa; background-color: #333; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Harryesthetics</h1>
+        </div>
+        <div class="content">
+            <h1>Order Canceled</h1>
+            <p>Hi {{userName}},</p>
+            <p>We are very sorry to inform you that your order has been **Canceled**.</p>
+            <div class="important-notice">
+                <p>⚠️ We are very sorry for the inconvenience. We believe this was a server-side error, not your fault.</p>
+            </div>
+            <h2>Order Details:</h2>
+            <p><strong>Order ID:</strong> {{orderId}}</p>
+            <p><strong>Total Price:</strong> ${{totalPrice}}</p>
+            <p><strong>Shipping Address:</strong> {{address}}</p>
+            
+            <p>Please place the order again using the details above. Thank you for your patience!</p>
+            <div style="text-align: center;">
+                <a href="http://localhost:5173/user/products" class="cta-button">Place a New Order</a>
+            </div>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 Harryesthetics. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
