@@ -37,8 +37,8 @@ Follow these steps to get the projects up and running on your local machine:
 
 1. Clone the Repository
 
-git clone https://github.com/Harry-47/Full-Stack-Projects.git
-cd Full-Stack-Projects
+git clone https://github.com/Harry-47/Full-Stack-Projects.git.
+cd Full-Stack-Projects.
 
 
 2. Setup the Backend (Server)
@@ -75,18 +75,20 @@ Run the server:
 Open a new terminal and navigate to the client folder:
 
 
-cd Employee-Management-System/client
-npm install
+cd Employee-Management-System/client.
+npm install.
 
 Environment Variables: Create a .env file in the server folder and add your:
 
-VITE_API_URL( basically the base route of your backend server)
+VITE_API_URL( basically the base route of your backend server).
 
-VITE_SERVER_URL ( what i did was base route for serving static file was different that actual base route so just add it by finding from network tab where does the img tag requests for the image, HEHE 😅)
+VITE_SERVER_URL ( what i did was base route for serving static file was different that actual base route so just add it by finding from network tab where does the img tag requests for the image, HEHE 😅).
 
-VITE_AUTH_URL ( this is same as your VITE_API_URL but specifically named just for auth pages to send request to server , but must add because auth pages are actually using it)
+VITE_AUTH_URL ( this is same as your VITE_API_URL but specifically named just for auth pages to send request to server , but must add because auth pages are actually using it).
 
-npm run dev
+npm run dev.
+
+API_DOCS: https://huraira-7718308.postman.co/workspace/Huraira's-Workspace~40076f1a-cf93-4965-8e3c-4bd885960a0f/collection/45870313-1e884326-8a0b-4da2-b543-9d0affe00a36?action=share&creator=45870313&active-environment=45870313-8c28137c-9918-4441-99f5-23c7428c389b
 
 
 *Developed by [Harry-47](https://github.com/Harry-47) - CS Undergrad & MERN Enthusiast.*
