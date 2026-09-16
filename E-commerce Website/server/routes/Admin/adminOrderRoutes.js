@@ -4,7 +4,7 @@ const { getAllOrders,
     updateOrderStatus,
     deleteOrderById,
     searchOrders
-    } = require('../../controllers/admin/adminOrderController');
+    } = require('../../controllers/Admin/adminOrderController');
 
 
 router.get('/', getAllOrders);
