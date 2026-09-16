@@ -62,22 +62,21 @@ router.get(
 
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax", // development ke liye false
-      path: "/",
+      secure: true,
+      sameSite: 'none', 
     });
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       path: "/api/v1/auth/refresh",
     });
 
     res.cookie("fingerprint", fingerprint, {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       path: "/",
     });
     res.redirect(
@@ -106,22 +105,22 @@ router.get(
 
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      secure: false, 
-      sameSite: "lax",// development ke liye false
+      secure: true, 
+      sameSite: "none",// development ke liye false
       path: "/",
     });
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       path: "/api/v1/auth/refresh",
     });
 
     res.cookie("fingerprint", fingerprint, {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       path: "/",
     });
     res.redirect(
