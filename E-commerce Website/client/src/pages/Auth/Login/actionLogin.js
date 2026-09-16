@@ -8,7 +8,7 @@ import axiosApi from '../../../utils/axiosInstance';
   const password = formData.get('password');
 
   try {
-    const response = await axiosApi.post(`${import.meta.env.VITE_API_URL}auth/login`, { email, password } );
+    const response = await axiosApi.post(`auth/login`, { email, password } );
 
     
 
