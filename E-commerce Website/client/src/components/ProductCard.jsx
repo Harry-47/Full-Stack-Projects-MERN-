@@ -11,12 +11,19 @@ const ProductCard = ({ product, linkTo, topRightAction, bottomRightAction }) => 
     const discountedPrice = (product.price - (product.price * (product.discount / 100))).toFixed(2);
 
     return (
-        <Link
-            to={linkTo} 
+        <motion.div 
+            variants={cardVariants} 
+            initial="hidden" 
+            animate="visible"
             className="rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 relative group overflow-hidden flex flex-col w-[300px] min-h-[400px] bg-white border border-gray-200 hover:border-black"
         >
-            <motion.div variants={cardVariants} initial="hidden" animate="visible" className="flex flex-col flex-1">
-                
+            {/* ⭐ SLOT 1: Top Right Action (Wishlist OR Delete) */}
+            <div className="absolute top-4 right-4 z-30 flex flex-col gap-2">
+                {topRightAction}
+            </div>
+
+            {/* Product Image & Details wrapped in Link */}
+            <Link to={linkTo} className="flex flex-col flex-1">
                 {/* Product Image */}
                 <div className="relative overflow-hidden h-52 bg-gray-100 p-4">
                     <motion.img
@@ -26,11 +33,6 @@ const ProductCard = ({ product, linkTo, topRightAction, bottomRightAction }) => 
                     {product.discount > 0 && (
                         <span className="absolute top-2 left-2 text-xs font-semibold bg-red-500 text-white px-3 py-1 rounded-full">Sale!</span>
                     )}
-                </div>
-
-                {/* ⭐ SLOT 1: Top Right Action (Wishlist OR Delete) */}
-                <div className="absolute top-4 right-4 z-20 flex flex-col gap-2">
-                    {topRightAction}
                 </div>
 
                 {/* Product Details */}
@@ -61,16 +63,15 @@ const ProductCard = ({ product, linkTo, topRightAction, bottomRightAction }) => 
                         </div>
                     </div>
                 </div>
+            </Link>
 
-                {/* ⭐ SLOT 2: Bottom Right Action (Cart OR Null) */}
-                {bottomRightAction && (
-                    <div className="z-30">
-                        {bottomRightAction}
-                    </div>
-                )}
-
-            </motion.div>
-        </Link>
+            {/* ⭐ SLOT 2: Bottom Right Action (Cart OR Null) */}
+            {bottomRightAction && (
+                <div className="p-4 pt-0 z-30">
+                    {bottomRightAction}
+                </div>
+            )}
+        </motion.div>
     );
 };
 
