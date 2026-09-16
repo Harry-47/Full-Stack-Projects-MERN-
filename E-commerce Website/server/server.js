@@ -35,7 +35,9 @@ app.use(passport.initialize());
 
 // Middleware
 const allowedOrigins = [
-  'https://e-commerce-website-h1gakm9ae-harry-47s-projects.vercel.app',
+  'https://e-commerce-website-gilt-delta.vercel.app/',
+  'https://e-commerce-website-git-main-harry-47s-projects.vercel.app/',
+  'https://e-commerce-website-7kbvh8cnu-harry-47s-projects.vercel.app/',
   'http://localhost:5173', // local testing 
   'http://localhost:3000'
 ];
