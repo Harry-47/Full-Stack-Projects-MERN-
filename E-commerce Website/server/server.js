@@ -10,6 +10,7 @@ const passport = require('passport');
  
 
 const app = express();
+app.set('trust proxy', 1); //trust the proxy
 const port = process.env.PORT || 3000;
 
 // Connect to MongoDB (Local)
