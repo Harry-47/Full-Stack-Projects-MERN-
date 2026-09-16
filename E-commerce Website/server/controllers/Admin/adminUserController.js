@@ -43,8 +43,13 @@ exports.searchUsersByName = async (req, res) => {
   const query = req.query.keyword; // Changed from req.params.query
   try {
     const regex = new RegExp(query, 'i');
-    const users = await User.find({ name: { $regex: regex } }).select('name email role createdAt');
-    if (users.length === 0) {
+const users = await User.find({
+  $or: [
+    { name: { $regex: regex } },
+    { email: { $regex: regex } },
+    { displayName: { $regex: regex } }
+  ]
+}).select('name email role createdAt');    if (users.length === 0) {
       return res.status(404).json({ message: "No users found" });
     }
     res.status(200).json(users);
