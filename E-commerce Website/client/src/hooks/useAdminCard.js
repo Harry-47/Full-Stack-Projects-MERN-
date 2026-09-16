@@ -11,7 +11,7 @@ const useAdminCard = (orderId, initialStatus) => {
 
     const handleSaveStatus = async () => {
         try {
-            await axiosApi.put(`/admin/orders/update-status/${orderId}`, { 
+            await axiosApi.put(`admin/orders/update-status/${orderId}`, { 
                 status: selectedStatus 
             });
             toast.success('Order status updated successfully!');
