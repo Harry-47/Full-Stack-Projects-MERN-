@@ -150,21 +150,21 @@ exports.loginUser = async (req, res) => {
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
       secure: true,
-      sameSite: none,
+      sameSite: 'none',
       path: '/'
     });
 
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
       secure: true,
-      sameSite: none,
+      sameSite: 'none',
       path: '/api/v1/auth/refresh'
     })
 
     res.cookie('fingerprint', fingerprint, {
       httpOnly: true,
       secure: true,
-      sameSite: none,s
+      sameSite: 'none',
       path: '/'
     })
 
@@ -197,7 +197,7 @@ exports.logoutUser = async (req, res) => {
         res.clearCookie(`accessToken`, {
             httpOnly: true,
             secure: true,
-            sameSite: none,
+            sameSite: 'none',
             maxAge: 3 * 24 * 60 * 60 * 1000, 
             path: '/'
  // Match the secure option from login
@@ -206,14 +206,14 @@ exports.logoutUser = async (req, res) => {
         res.clearCookie(`refreshToken`, {
             httpOnly: true,
             secure: true,
-            sameSite: none,
+            sameSite: 'none',
             path: '/refresh' // Match the secure option from login
         });
 
         res.clearCookie('fingerprint', {
             httpOnly: true,
             secure: true,
-            sameSite: none
+            sameSite: 'none'
         });
 
         isLoggedOut = true
@@ -249,8 +249,8 @@ exports.refreshToken = async (req, res) => {
     const { accessToken: newAccessToken, refreshToken: newRefreshToken } = createTokens(user, printHash);
 
     // 5. Cookies set karo
-    res.cookie("accessToken", newAccessToken, { httpOnly: true, secure: true, sameSite: none,  path: '/' });
-    res.cookie('refreshToken', newRefreshToken, { httpOnly: true, secure: true, sameSite: none, path: '/api/v1/auth/refresh' });
+    res.cookie("accessToken", newAccessToken, { httpOnly: true, secure: true, sameSite: 'none',  path: '/' });
+    res.cookie('refreshToken', newRefreshToken, { httpOnly: true, secure: true, sameSite: 'none', path: '/api/v1/auth/refresh' });
 
     // 6. DB update karo
     user.refreshToken = newRefreshToken;
