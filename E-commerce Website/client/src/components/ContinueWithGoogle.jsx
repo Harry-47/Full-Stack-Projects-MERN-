@@ -12,7 +12,7 @@ const ContinueWithGoogle = () => {
              
                 <button 
                 onClick={() => {
-                    window.location.href = "http://localhost:3000/api/auth/google";
+                    window.location.href = "https://e-commerce-website-n2cw.onrender.com/api/auth/google";
                 }}
                     type="button"
                     className="relative overflow-hidden bg-white text-gray-700 w-full py-3 rounded-4xl font-semibold shadow-lg group disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-colors duration-300 border-2 border-gray-300 hover:bg-gray-100"
