@@ -11,7 +11,7 @@ const useAdminCard = (orderId, initialStatus) => {
 
     const handleSaveStatus = async () => {
         try {
-            await fetch(`${import.meta.env.VITE_API_URL}/admin/orders/update-status/${orderId}`, {
+            await fetch(`admin/orders/update-status/${orderId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ status: selectedStatus }),
