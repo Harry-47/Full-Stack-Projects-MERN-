@@ -45,29 +45,37 @@ const RenderUsers = ({ users, query, setQuery, onSearch, onDelete, isDeleting })
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
-                            <AnimatePresence>
-                                {users.map((user) => (
-                                    <motion.tr key={user._id} layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                                        <td className="px-6 py-4 text-sm text-gray-900">{user.name || user.displayName}</td>
-                                        <td className="px-6 py-4 text-sm text-gray-500">{user.email}</td>
-                                        <td className="px-6 py-4 text-sm text-gray-500">{user.role}</td>
-                                        <td className="px-6 py-4 text-sm text-gray-500">
-                                            {user.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A'}
-                                        </td>
-                                        <td className="px-6 py-4 text-right text-sm font-medium">
-                                            <button
-                                                onClick={() => onDelete(user.email)}
-                                                disabled={isDeleting}
-                                                className="text-red-600 hover:text-red-900 cursor-pointer transition-colors"
-                                            >
-                                                {isDeleting ? '...' : <FaTrashAlt />}
-                                            </button>
-                                        </td>
-                                    </motion.tr>
-                                ))}
-                            </AnimatePresence>
-                        </tbody>
-                    </table>
+    {users.length > 0 ? (
+        <AnimatePresence>
+            {users.map((user) => (
+                <motion.tr key={user._id} layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                    <td className="px-6 py-4 text-sm text-gray-900">{user.name || user.displayName}</td>
+                    <td className="px-6 py-4 text-sm text-gray-500">{user.email}</td>
+                    <td className="px-6 py-4 text-sm text-gray-500">{user.role}</td>
+                    <td className="px-6 py-4 text-sm text-gray-500">
+                        {user.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A'}
+                    </td>
+                    <td className="px-6 py-4 text-right text-sm font-medium">
+                        <button
+                            onClick={() => onDelete(user.email)}
+                            disabled={isDeleting}
+                            className="text-red-600 hover:text-red-900 cursor-pointer transition-colors"
+                        >
+                            {isDeleting ? '...' : <FaTrashAlt />}
+                        </button>
+                    </td>
+                </motion.tr>
+            ))}
+        </AnimatePresence>
+    ) : (
+        <tr>
+            <td colSpan="5" className="text-center py-8 text-gray-500 text-base">
+                No users found. 📭
+            </td>
+        </tr>
+    )}
+</tbody>                    
+</table>
                 </div>
             </motion.div>
         </>
