@@ -7,7 +7,7 @@ const actionRegister = async ({ request }) => {
 
   const data = Object.fromEntries(formData);
 
-  const res = await axiosApi.post(`${import.meta.env.VITE_API_URL}/auth/register`, data);
+  const res = await axiosApi.post(`${import.meta.env.VITE_API_URL}auth/register`, data);
 
   
 
