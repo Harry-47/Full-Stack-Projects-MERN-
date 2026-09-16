@@ -16,24 +16,24 @@ const ContactInfo = () => {
                     <div className="flex items-center text-gray-700">
                         <FaMapMarkerAlt className="text-black text-xl mr-4 flex-shrink-0" />
                         <p className="text-lg">
-                            123 Aesthetic Lane, Block 7,
+                            Chak 47 N.B,
                             <br />
                             Sargodha, Punjab, Pakistan
                         </p>
                     </div>
                     <div className="flex items-center text-gray-700">
                         <FaPhone className="text-black text-xl mr-4 flex-shrink-0" />
-                        <p className="text-lg">+92 323 1234567 (Mon-Fri, 9am-5pm PKT)</p>
+                        <p className="text-lg">+92 328 7594070</p>
                     </div>
                     <div className="flex items-center text-gray-700">
                         <FaEnvelope className="text-black text-xl mr-4 flex-shrink-0" />
-                        <p className="text-lg">support@harryesthetics.com</p>
+                        <p className="text-lg">huraira38403@gmail.com</p>
                     </div>
                 </div>
             </div>
             
             <div className="mt-10 pt-6 border-t border-gray-200">
-                <h3 className="text-2xl font-bold text-gray-800 mb-6">Connect With Us</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-6">Connect With Me</h3>
                 <div className="flex space-x-6 justify-center lg:justify-start">
                     <motion.a whileHover={{ scale: 1.2, color: '#3b5998' }} href="https://www.facebook.com/huraira.khan.96742" target="_blank" rel="noopener noreferrer" className="text-gray-600 transition-colors duration-300">
                         <FaFacebook size={32} />
