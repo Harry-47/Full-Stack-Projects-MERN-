@@ -50,7 +50,7 @@ const RenderAdminCategory = ({ productsData, category, onFilterOpen, isFilterOpe
                         <>
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                                 {products.map((product) => (
-                                    <ProductCard key={product._id} product={product} DeleteIcon={DeleteIcon} page={"admin"} />
+                                    <ProductCard key={product._id} product={product} DeleteIcon={DeleteIcon} page={"admin"} linkTo={`admin/products/${product._id}`} />
                                 ))}
                             </div>
                             <Pagination currentPage={currentPage} totalPages={totalPages} />
