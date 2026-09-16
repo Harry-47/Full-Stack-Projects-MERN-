@@ -34,7 +34,24 @@ app.use(passport.initialize());
 
 
 // Middleware
-app.use(cors({ origin: 'https://e-commerce-website-h1gakm9ae-harry-47s-projects.vercel.app/' ,credentials: true }));
+const allowedOrigins = [
+  'https://e-commerce-website-h1gakm9ae-harry-47s-projects.vercel.app',
+  'http://localhost:5173', // local testing 
+  'http://localhost:3000'
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true
+}));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
