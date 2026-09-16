@@ -34,7 +34,7 @@ app.use(passport.initialize());
 
 
 // Middleware
-app.use(cors({ origin: ['http://localhost:5173', 'http://192.168.1.13:5173'] ,credentials: true }));
+app.use(cors({ origin: 'https://e-commerce-website-h1gakm9ae-harry-47s-projects.vercel.app/' ,credentials: true }));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
