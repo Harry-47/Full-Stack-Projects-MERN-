@@ -5,7 +5,7 @@ import axiosApi from "./axiosInstance";
 const logout = async () => {
 
     try {
-        const response = await axiosApi.post('http://localhost:3000/api/v1/auth/logout');
+        const response = await axiosApi.post('auth/logout');
 
         if (!response.status === 200) {
             toast.error("Error logging out");
