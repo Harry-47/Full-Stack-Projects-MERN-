@@ -1,9 +1,16 @@
 import axios from "axios";
 
-// Create the main instance
 const axiosApi = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: "https://e-commerce-website-n2cw.onrender.com", //only domain
   withCredentials: true,
+});
+
+// auto appends /api/v1
+axiosApi.interceptors.request.use((config) => {
+  if (!config.url.startsWith('/api/v1')) {
+    config.url = `/api/v1${config.url.startsWith('/') ? '' : '/'}${config.url}`;
+  }
+  return config;
 });
 
 axiosApi.interceptors.response.use(
@@ -12,21 +19,15 @@ axiosApi.interceptors.response.use(
     const originalRequest = err.config;
     const status = err.response?.status;
 
-    // if refreshing of token fails, break the loop
     if (originalRequest.url.includes("/auth/refresh") && status === 401) {
       window.location.href = "/auth/login";
       return Promise.reject(err);
     }
 
-    // 🔄 2. 401 ERROR (TOKEN EXPIRED) - TRY REFRESH
     if (status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
-        await axios.post(
-          `${import.meta.env.VITE_API_URL}/auth/refresh`,
-          {},
-          { withCredentials: true },
-        );
+        await axiosApi.post('/auth/refresh');
         return axiosApi(originalRequest);
       } catch (err) {
         window.location.href = "/auth/login";
@@ -37,6 +38,8 @@ axiosApi.interceptors.response.use(
       window.location.href = "/"; 
       return Promise.reject(err);
     }
+
+    return Promise.reject(err);
   },
 );
 
