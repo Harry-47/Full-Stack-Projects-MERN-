@@ -32,7 +32,7 @@ const ProductsGrid = ({products, currentPage, totalPages}) => {
   >
       {products.map((product) => (
           <motion.div key={product._id} variants={itemVariants}>
-              <ProductCard product={product} page={'user'} linkTo={`/products/${product._id}`} />
+              <ProductCard product={product} page={'user'} linkTo={`user/products/${product._id}`} />
           </motion.div>
       ))}
   </motion.div>
