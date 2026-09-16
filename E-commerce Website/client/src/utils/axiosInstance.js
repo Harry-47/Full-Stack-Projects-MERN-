@@ -5,10 +5,17 @@ const axiosApi = axios.create({
   withCredentials: true,
 });
 
-// auto appends /api/v1
+// auto appends /api/v1 safely without double slashes
 axiosApi.interceptors.request.use((config) => {
-  if (!config.url.startsWith('/api/v1')) {
-    config.url = `/api/v1${config.url.startsWith('/') ? '' : '/'}${config.url}`;
+  // Ensure url is a string and handle leading slashes safely
+  let cleanUrl = config.url || '';
+  
+  if (!cleanUrl.startsWith('/api/v1')) {
+    // Remove leading slash if present to prevent double slash with /api/v1
+    if (cleanUrl.startsWith('/')) {
+      cleanUrl = cleanUrl.substring(1);
+    }
+    config.url = `/api/v1/${cleanUrl}`;
   }
   return config;
 });
@@ -17,14 +24,15 @@ axiosApi.interceptors.response.use(
   (response) => response,
   async (err) => {
     const originalRequest = err.config;
-    const status = err.response?.status;
+    // Safe check for status to prevent crashing if response is undefined
+    const status = err.response ? err.response.status : null;
 
-    if (originalRequest.url.includes("/auth/refresh") && status === 401) {
+    if (originalRequest && originalRequest.url && originalRequest.url.includes("/auth/refresh") && status === 401) {
       window.location.href = "/auth/login";
       return Promise.reject(err);
     }
 
-    if (status === 401 && !originalRequest._retry) {
+    if (status === 401 && originalRequest && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
         await axiosApi.post('/auth/refresh');
