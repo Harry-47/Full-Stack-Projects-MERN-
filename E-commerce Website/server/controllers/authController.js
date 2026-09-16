@@ -91,7 +91,7 @@ exports.registerUser = async (req, res) => {
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ error: "User already exists" });
+      return res.status(400).json({ error: "User already exists with provided email" });
     }
 
     const existingAdmin = await User.findOne({ role: 'admin' });
@@ -133,7 +133,7 @@ exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).select('+password')
     if (!user)
       return res.status(405).json({ error: "No User Found" });
 
